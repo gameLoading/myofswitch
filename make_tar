@@ -1,0 +1,6 @@
+rm -rf openvswitch-2.15.0.tar.gz
+tar -zcvf openvswitch-2.15.0.tar.gz openvswitch-2.15.0/
+git add .
+git rm --cached openvswitch-2.15.0 -r
+git commit -m "start"
+git push origin2 master

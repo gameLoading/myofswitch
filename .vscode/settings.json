@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "vlog.h": "c",
+        "in-band.h": "c",
+        "kernel.h": "c",
+        "sysinfo.h": "c",
+        "dynamic-string.h": "c",
+        "hmap.h": "c",
+        "ovs-thread.h": "c",
+        "const.h": "c",
+        "module.h": "c",
+        "ofp-port.h": "c"
+    }
+}

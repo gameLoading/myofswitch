@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/tmp/openwrt/staging_dir/target-aarch64_cortex-a72_musl/root-bcm27xx/usr/include/",
+                "/tmp/openwrt/staging_dir/target-aarch64_cortex-a72_musl/root-bcm27xx/usr/include/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
