@@ -9,6 +9,10 @@
         "ovs-thread.h": "c",
         "const.h": "c",
         "module.h": "c",
-        "ofp-port.h": "c"
+        "ofp-port.h": "c",
+        "ofp-msgs.h": "c",
+        "ofp-print.h": "c",
+        "ofp-errors.h": "c",
+        "json.h": "c"
     }
 }
