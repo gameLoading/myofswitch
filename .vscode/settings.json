@@ -13,6 +13,8 @@
         "ofp-msgs.h": "c",
         "ofp-print.h": "c",
         "ofp-errors.h": "c",
-        "json.h": "c"
+        "json.h": "c",
+        "myiw.h": "c",
+        "wdev.h": "c"
     }
 }
