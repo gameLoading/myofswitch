@@ -15,6 +15,11 @@
         "ofp-errors.h": "c",
         "json.h": "c",
         "myiw.h": "c",
-        "wdev.h": "c"
+        "wdev.h": "c",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp"
     }
 }
