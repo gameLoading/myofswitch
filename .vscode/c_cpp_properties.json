@@ -4,9 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/tmp/openwrt/staging_dir/target-aarch64_cortex-a72_musl/root-bcm27xx/usr/include/",
-                "/tmp/openwrt/staging_dir/target-aarch64_cortex-a72_musl/root-bcm27xx/usr/include/",
-                "/home/user/myofswitch/openvswitch-2.15.0/"
+                "/home/kkyoon/openwrt-iptime/openwrt/staging_dir/target-mipsel_24kc_musl/usr/include/",
+                "/home/kkyoon/openwrt-iptime/openwrt/staging_dir/target-mipsel_24kc_musl/usr/include/",
+                "/home/kkyoon/myofswitch/openvswitch-2.15.0/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
