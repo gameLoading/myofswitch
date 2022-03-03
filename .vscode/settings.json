@@ -21,6 +21,8 @@
         "string_view": "cpp",
         "ostream": "cpp",
         "sstream": "cpp",
-        "libubus.h": "c"
+        "libubus.h": "c",
+        "json_util.h": "c",
+        "json_tokener.h": "c"
     }
 }
