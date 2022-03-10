@@ -92,6 +92,9 @@
         "cstdbool": "c",
         "memory.h": "c",
         "myuci.h": "c",
-        "myubus.h": "c"
+        "myubus.h": "c",
+        "stringex.h": "c",
+        "string.h": "c",
+        "stdio.h": "c"
     }
 }
