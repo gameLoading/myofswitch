@@ -90,6 +90,8 @@
         "thread": "c",
         "cinttypes": "c",
         "cstdbool": "c",
-        "memory.h": "c"
+        "memory.h": "c",
+        "myuci.h": "c",
+        "myubus.h": "c"
     }
 }
