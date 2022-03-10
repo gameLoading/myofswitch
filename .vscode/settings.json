@@ -96,6 +96,7 @@
         "stringex.h": "c",
         "string.h": "c",
         "stdio.h": "c",
-        "processex.h": "c"
+        "processex.h": "c",
+        "malloc.h": "c"
     }
 }
