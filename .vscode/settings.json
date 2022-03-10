@@ -98,6 +98,7 @@
         "stdio.h": "c",
         "processex.h": "c",
         "malloc.h": "c",
-        "strtools.h": "c"
+        "strtools.h": "c",
+        "syslog.h": "c"
     }
 }
