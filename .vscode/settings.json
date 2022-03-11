@@ -99,6 +99,7 @@
         "processex.h": "c",
         "malloc.h": "c",
         "strtools.h": "c",
-        "syslog.h": "c"
+        "syslog.h": "c",
+        "unistd.h": "c"
     }
 }
