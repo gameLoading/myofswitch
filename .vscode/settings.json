@@ -100,6 +100,7 @@
         "malloc.h": "c",
         "strtools.h": "c",
         "syslog.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "ofp-wireless.h": "c"
     }
 }
