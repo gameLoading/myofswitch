@@ -101,6 +101,7 @@
         "strtools.h": "c",
         "syslog.h": "c",
         "unistd.h": "c",
-        "ofp-wireless.h": "c"
+        "ofp-wireless.h": "c",
+        "mysemaphore.h": "c"
     }
 }
