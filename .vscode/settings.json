@@ -104,6 +104,8 @@
         "ofp-wireless.h": "c",
         "mysemaphore.h": "c",
         "stdbool.h": "c",
-        "blobmsg.h": "c"
+        "blobmsg.h": "c",
+        "mystrtools.h": "c",
+        "myjson.h": "c"
     }
 }
