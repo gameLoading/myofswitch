@@ -102,6 +102,8 @@
         "syslog.h": "c",
         "unistd.h": "c",
         "ofp-wireless.h": "c",
-        "mysemaphore.h": "c"
+        "mysemaphore.h": "c",
+        "stdbool.h": "c",
+        "blobmsg.h": "c"
     }
 }
