@@ -106,6 +106,7 @@
         "stdbool.h": "c",
         "blobmsg.h": "c",
         "mystrtools.h": "c",
-        "myjson.h": "c"
+        "myjson.h": "c",
+        "myleak_detector_c.h": "c"
     }
 }
