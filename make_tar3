@@ -1,0 +1,4 @@
+rm -rf openvswitch-2.15.0.tar.gz
+tar -zcvf openvswitch-2.15.0.tar.gz openvswitch-2.15.0/
+rm ~/openwrt-raspberryPi4/dl/openv* -rf
+cp openvswitch-2.15.0.tar.gz ~/openwrt-raspberryPi4/dl/
