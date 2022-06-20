@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 16:09:03 2022
+# Make data base, printed on Sun Jun  5 17:16:06 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ CURDIR := /home/kkyoon/myofswitch
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"738ac08552cca045871a73764b8c446f.ko","_translationsConfigFile":"/home/kkyoon/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko/tcf.json","_cacheRoot":"/home/kkyoon/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko","_resolvedLanguagePackCoreLocation":"/home/kkyoon/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/kkyoon/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/kkyoon/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
 # makefile
@@ -59,7 +59,7 @@ LC_NAME = ko_KR.UTF-8
 # environment
 VSCODE_CWD = /home/kkyoon
 # environment
-SSH_CONNECTION = 192.168.0.137 10820 192.168.11.3 22
+SSH_CONNECTION = 25.31.198.0 58855 25.16.175.64 22
 # environment
 PATH = /home/kkyoon/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/home/kkyoon/.local/bin:/home/kkyoon/bin:/home/kkyoon/.nvm/versions/node/v12.14.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kkyoon/bin:/opt/idea/bin:/home/kkyoon/onos/tools/package/runtime/bin:/home/kkyoon/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kkyoon/.bazel/bin
 # environment
@@ -81,7 +81,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /home/kkyoon/myofswitch
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-f2820fca-1e67-474e-a53b-51b2c4c85b95.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-0bcffdb2-e833-42a7-a5b4-b4631f3823c8.sock
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -93,7 +93,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = kkyoon
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 NVM_CD_FLAGS = 
 # automatic
@@ -111,7 +111,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 3
 # environment
-XDG_SESSION_ID = 756
+XDG_SESSION_ID = 4191
 # environment
 USER = kkyoon
 # environment
@@ -133,7 +133,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 192.168.0.137 10820 22
+SSH_CLIENT = 25.31.198.0 58855 22
 # environment
 MAIL = /var/mail/kkyoon
 # automatic
@@ -241,6 +241,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Fri May 20 16:09:03 2022
+# Finished Make data base on Sun Jun  5 17:16:06 2022
 
  
