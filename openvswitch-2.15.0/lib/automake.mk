@@ -335,7 +335,6 @@ lib_libopenvswitch_la_SOURCES = \
 	lib/custom/myprocess.c \
 	lib/custom/wdev.c \
 	lib/custom/ofp-wireless.c \
-	lib/custom/mysemaphore.c \
 	lib/custom/myUnixSocketCli.c \
 	lib/tnl-neigh-cache.c \
 	lib/tnl-neigh-cache.h \

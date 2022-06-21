@@ -63,7 +63,7 @@ struct ofpbuf* ofputil_alloc_wparams_stats_reply(const struct ofp_header *reques
 enum ofperr
 ofputil_decode_wparams_set_config(const struct ofp_header *oh, char *deviceName, struct wparams_config_tlv *start)
 {
-    uint8_t* bytes = (const uint8_t *) oh;
+    uint8_t* bytes = (uint8_t *) oh;
     ofp_wparams_config_t type;
     uint8_t length;
 
@@ -115,7 +115,7 @@ ofputil_decode_wparams_set_config(const struct ofp_header *oh, char *deviceName,
             else if (flag == 2){
                 char* str = (char*)malloc(sizeof(char)*(length+1));
                 memset(str, 0, length+1);
-                copyString_m(str, bytes, length+1);
+                copyString_m(str, (char*)bytes, length+1);
                 flag=0;
                 bytes+=length;
                 tlvOffset+=length;
@@ -131,7 +131,8 @@ ofputil_decode_wparams_set_config(const struct ofp_header *oh, char *deviceName,
                     start->next = NULL;
                     before = start;
                 }else{
-                    current = (struct wparams_config_tlv *)malloc(sizeof(struct wparams_config_tlv *));
+                    current = (struct wparams_config_tlv *)malloc(sizeof(struct wparams_config_tlv));
+                    memset(current, 0, sizeof(struct wparams_config_tlv));
                     current->length = length;
                     current->type = type;
                     current->value = str;
@@ -152,7 +153,8 @@ ofputil_free_wparams_set_config(struct wparams_config_tlv *start)
 {
     if (start == NULL) return;
 
-    struct wparams_config_tlv *current = start;
+    struct wparams_config_tlv *current;
+    current = start;
     struct wparams_config_tlv *next = NULL;
     do{
         openlog("ofproto.c", LOG_CONS, LOG_USER);
@@ -162,7 +164,17 @@ ofputil_free_wparams_set_config(struct wparams_config_tlv *start)
         openlog("ofproto.c", LOG_CONS, LOG_USER);
         syslog(LOG_INFO, "current Value : %s", current->value);
         closelog();
-        if (current->value!=NULL) free(current->value);
-        free(current);
-    }while(next != NULL);
+        if (current->value!=NULL) {
+            openlog("ofproto.c", LOG_CONS, LOG_USER);
+            syslog(LOG_INFO, "free(current->value);");
+            closelog();
+            free(current->value);
+            current->value = NULL;
+        }
+        openlog("ofproto.c", LOG_CONS, LOG_USER);
+        syslog(LOG_INFO, "free(current);");
+        closelog();
+        if (current != NULL) free(current);
+        current = next;
+    }while(current != NULL);
 }

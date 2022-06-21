@@ -44,7 +44,8 @@ enum wparams_stat_types{
     COUNTRYLIST,
     SCAN,
     SURVEY,
-    SYSTEM,
+    SYSTEM_INFO,
+    SYSTEM_BOARD,
 };
 
 enum wparams_config_types{

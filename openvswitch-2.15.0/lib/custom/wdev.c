@@ -14,7 +14,6 @@
 int InitialWirelessDevice(void);
 
 /*Query information for Wireless Device */
-int getAllWirelessDevice(char buf[][MAX_DEVICE_NAME_LEN]);
 void getAllWirelessDeviceWithJSON(char *buf, int buf_len);
 void getWirelessDeviceInfo(char *deviceName, char *buf, int buf_len);
 void getAssocicatedHosts(char *deviceName, char buf[], int buf_len);
@@ -24,12 +23,13 @@ void getTxpowerList(char *deviceName, char buf[], int buf_len);
 void getCountryList(char *deviceName, char buf[], int buf_len);
 void getScannedSSIDList(char *deviceName, char buf[], int buf_len);
 void getFreqSurveyInfo(char *deviceName, char buf[], int buf_len);
+void getSystemInfo(char *deviceName, char buf[], int buf_len);
+void getSystemBoard(char *deviceName, char buf[], int buf_len);
 
 /*Managing function for Wireless Device */
 void setSSID(char *deviceName, char *ssid, int buf_len);
 void setTxPower(char *deviceName, int txpower);
 void setWirelessUcis(char *deviceName, char *buf);
-void restartWifi(void);
 
 /*For utils*/
 int isAvailableSSID(char *ssid);
@@ -74,7 +74,7 @@ int InitialWirelessDevice(void)
 	// 		printf("Wireless Device Adding result code : %d\n", ret);
 	// 	}
 	// }
-	// return 0;
+	return 0;
 }
 
 void setSSID(char *deviceName, char *ssid, int buf_len){
@@ -125,39 +125,6 @@ void setWirelessUcis(char *deviceName, char *buf){
 		send_unix_msg_onetime(UNIX_SOCK_FILE, ptr);
 		ptr = strtok(NULL, ",");
 	}
-}
-
-int getAllWirelessDevice(char buf[][MAX_DEVICE_NAME_LEN])
-{
-	// char result[MAX_JSON_SIZE] = "";
-	// ubus_cmd_call("iwinfo", "devices", result, NULL);
-	// result[MAX_JSON_SIZE - 1] = '\0';
-	// // printf("%s---4", result);
-
-	// struct json_object *jobj;
-
-	// struct json_tokener *tok = json_tokener_new();
-	// jobj = json_tokener_parse_ex(tok, result, strlen(result));
-
-	// if (tok->err != json_tokener_success)
-	// {
-	// 	printf("%s\n", json_tokener_error_desc(tok->err));
-	// }
-
-	// struct json_object *devices_json, *device_json;
-	// devices_json = json_object_object_get(jobj, "devices");
-
-	// memset(buf, 0, sizeof(char) * MAX_DEVICE_SIZE * MAX_DEVICE_NAME_LEN);
-	
-	// int dev_cnt = json_object_array_length(devices_json);
-	// for (int i = 0; i < dev_cnt; i++)
-	// {
-	// 	device_json = json_object_array_get_idx(devices_json, i);
-	// 	strncpy(buf[i], json_object_get_string(device_json), MAX_DEVICE_NAME_LEN - 1);
-	// 	buf[i][MAX_DEVICE_NAME_LEN - 1] = '\0';
-	// }
-	// json_tokener_free(tok);
-	// return dev_cnt;
 }
 
 void getAllWirelessDeviceWithJSON(char *buf, int buf_len)
@@ -294,22 +261,37 @@ void getFreqSurveyInfo(char *deviceName, char buf[], int buf_len) {
 }
 
 
-void getSystemInfo(char *deviceName, char buf[], int buf_len){
+void getSystemBoard(char *deviceName, char buf[], int buf_len){
 	char cmd[MAX_JSON_SIZE] = "";
 	sprintf(cmd, "ubus -S call system board");
 	systemEx_oneline((char *)cmd, buf, buf_len);
 }
 
-void setTxPower(char *deviceName, int txpower){
+void getSystemInfo(char *deviceName, char buf[], int buf_len){
 	char cmd[MAX_JSON_SIZE] = "";
-	sprintf(cmd, "iw dev %s set txpower fixed %d", deviceName, txpower);
-	system(cmd);
+	sprintf(cmd, "ubus -S call system info");
+	systemEx_oneline((char *)cmd, buf, buf_len);
 }
 
-void restartWifi(void)
-{
-	system("ubus call network reload");
+void setTxPower(char *deviceName, int txpower){
+	// char cmd[MAX_JSON_SIZE] = "";
+	// sprintf(cmd, "iw dev %s set txpower fixed %d", deviceName, txpower);
+	// system(cmd);
+
+	openlog("ofproto.c", LOG_CONS, LOG_USER);
+	syslog(LOG_INFO, "dev : %s / txpower : %d\n", deviceName, txpower);
+	closelog();
+
+	char command[MAX_UCI_LEN+20+MAX_DEVICE_NAME_LEN] = "";
+	if (!isdigit(deviceName[4])) {
+		printf("deviceName length is not normal : %s\n", deviceName);
+		return -1;
+	}
+	int devIdx = deviceName[4]-'0';
+	sprintf(command, "uci set wireless.radio%d.txpower=%d", devIdx, txpower);
+	send_unix_msg_onetime(UNIX_SOCK_FILE, command);
 }
+
 int isAvailableSSID(char *ssid)
 {
 	for (int i = 0; ssid[i] != '\0';i++)

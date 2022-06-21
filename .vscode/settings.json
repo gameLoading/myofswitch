@@ -11,6 +11,13 @@
         "utility": "c",
         "string_view": "c",
         "ofp-wireless.h": "c",
-        "wdev.h": "c"
+        "wdev.h": "c",
+        "myjson.h": "c",
+        "ofpbuf.h": "c",
+        "stdint.h": "c",
+        "syslog.h": "c",
+        "ofp-port.h": "c",
+        "sem.h": "c",
+        "mysemaphore.h": "c"
     }
 }

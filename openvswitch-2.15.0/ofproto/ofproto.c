@@ -6441,11 +6441,17 @@ handle_wparams_stats_request(struct ofconn* ofconn, const struct ofp_header* oh)
             closelog();
             getFreqSurveyInfo(deviceName, payload, MAX_JSON_SIZE);
             break;
-        case SYSTEM:
+        case SYSTEM_INFO:
             openlog("ofproto.c", LOG_CONS, LOG_USER);
             syslog(LOG_INFO, "getSystemInfo(deviceName, payload, MAX_JSON_SIZE); call\n");
             closelog();
             getSystemInfo(deviceName, payload, MAX_JSON_SIZE);
+            break;
+        case SYSTEM_BOARD:
+            openlog("ofproto.c", LOG_CONS, LOG_USER);
+            syslog(LOG_INFO, "getSystemBoard(deviceName, payload, MAX_JSON_SIZE); call\n");
+            closelog();
+            getSystemBoard(deviceName, payload, MAX_JSON_SIZE);
             break;
         default:
             openlog("ofproto.c", LOG_CONS, LOG_USER);
@@ -6482,16 +6488,15 @@ handle_wparams_set_config(struct ofconn* ofconn, const struct ofp_header* oh)
     syslog(LOG_INFO, "handle_wparams_set_config() --4 called\n");
     closelog();
 
-    struct wparams_config_tlv *tlvs = (struct wparams_config_tlv *)malloc(sizeof(struct wparams_config_tlv *));
+    struct wparams_config_tlv *tlvs = (struct wparams_config_tlv *)malloc(sizeof(struct wparams_config_tlv));
     struct wparams_config_tlv *start = tlvs;
     char deviceName[MAX_DEVICE_NAME_LEN];
     ofputil_decode_wparams_set_config(oh, deviceName, tlvs);
 
-    openlog("ofproto.c", LOG_CONS, LOG_USER);
-    syslog(LOG_INFO, "tlv type:%d tlv value:%s\n", tlvs->type, tlvs->value);
-    closelog();
-
     while(tlvs != NULL){
+        openlog("ofproto.c", LOG_CONS, LOG_USER);
+        syslog(LOG_INFO, "tlv type:%d tlv value:%s\n", tlvs->type, tlvs->value);
+        closelog();
         switch (tlvs->type)
         {
         case RESET:
@@ -6530,8 +6535,10 @@ handle_wparams_set_config(struct ofconn* ofconn, const struct ofp_header* oh)
             closelog();
             ofputil_free_wparams_set_config(start);
             break;
+        }else{
+            free(tlvs);
+            tlvs = tlvs->next;
         }
-        tlvs = tlvs->next;
     }
     openlog("ofproto.c", LOG_CONS, LOG_USER);
     syslog(LOG_INFO, "ofconn:%p oh:%p\n", ofconn, oh);
